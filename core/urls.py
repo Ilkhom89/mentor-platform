@@ -8,6 +8,8 @@ from .views import (
     StudentLessonViewSet
 )
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from django.http import HttpResponse
+
 
 router = DefaultRouter()
 router.register('students', StudentViewSet, basename='student')
@@ -20,4 +22,5 @@ urlpatterns = [
     path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('', include(router.urls)),
+    path('', lambda request: HttpResponse("Welcome to Mentor Platform!")),
 ]
