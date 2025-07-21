@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: mentor-platform
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn mentor_platform.wsgi
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: mentor_platform.settings
+      - key: SECRET_KEY
+        value: your-secret-key
+      - key: DEBUG
+        value: False
